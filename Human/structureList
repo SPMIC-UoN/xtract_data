@@ -86,5 +86,10 @@ slf3_r 10
 ac 5
 
 # Uncinate Fasciculus
-unc_l 1
-unc_r 1
+uf_l 1
+uf_r 1
+
+# Vertical Occipital Fasciculus
+vof_l 10
+vof_r 10
+
