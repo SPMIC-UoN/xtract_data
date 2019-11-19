@@ -66,10 +66,6 @@ mdlf_r 5
 or_l 10
 or_r 10
 
-# Posterior Thalamic Radiation
-ptr_l 10
-ptr_r 10
-
 # Superior Thalamic Radiation
 str_l 1
 str_r 1
