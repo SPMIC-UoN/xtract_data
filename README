@@ -12,8 +12,10 @@ Saad Jbabdi, Kathryn Bryant, Shaun Warrington, Marina Charquero-Ballester, Gwena
 Citations:
 
 
-Warrington S, Bryant K, Charquero-Ballester M, Douaud G, Jbabdi S*, Mars R*, Sotiropoulos SN* (under review)
-Standardised protocols for automated tractography in the human and macaque brain.
+Warrington S, Bryant K, Khrapitchev A, Sallet J, Charquero-Ballester M, Douaud G, 
+Jbabdi S*, Mars R*, Sotiropoulos SN* (2020) XTRACT - Standardised protocols for 
+automated tractography in the human and macaque brain. 
+NeuroImage. DOI: 10.1016/j.neuroimage.2020.116923
 
 ---------------------------------------------------------------------
 
@@ -41,11 +43,11 @@ Then create the following image files (with this exact naming) and copy them int
 
 In order to use the protocol masks with XTRACT, you need to defined a seeding strategy in a file called StructureList.
 
-See e.g. $FSLDIR/etc/xtract/Human or $FSLDIR/etc/xtract/Macaque for examples.
+See e.g. $FSLDIR/data/xtract/Human or $FSLDIR/data/xtract/Macaque for examples.
 
 The StructList file is a text file with one entry per tract following this scheme:
 
-<tractName> <number>
+`<tractName> <number>`
 
-where <tractName> matches the protocol folder name (e.g. 'mytrack'), and <number> is the number of streamlines (in thousands) that are seeded from each seed voxel.  This text file can have comments in it (using '#').
+where `<tractName>` matches the protocol folder name (e.g. 'mytrack'), and <number> is the number of streamlines (in thousands) that are seeded from each seed voxel.  This text file can have comments in it (using '#').
 
