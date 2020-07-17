@@ -43,7 +43,7 @@ Then create the following image files (with this exact naming) and copy them int
 
 In order to use the protocol masks with XTRACT, you need to defined a seeding strategy in a file called StructureList.
 
-See e.g. $FSLDIR/data/xtract/Human or $FSLDIR/data/xtract/Macaque for examples.
+See e.g. $FSLDIR/data/xtract_data/Human or $FSLDIR/data/xtract_data/Macaque for examples.
 
 The StructList file is a text file with one entry per tract following this scheme:
 
