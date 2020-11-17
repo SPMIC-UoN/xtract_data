@@ -15,7 +15,7 @@ if [ "$2" == "" ];then
 fi
 
 f99dir=$3
-if [ "$atl" == "" ];then
+if [ "$f99dir" == "" ];then
     f99dir=$FSLDIR/data/xtract_data/standard/F99
 fi
 
