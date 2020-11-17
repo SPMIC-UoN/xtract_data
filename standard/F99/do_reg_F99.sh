@@ -9,14 +9,14 @@ if [ "$2" == "" ];then
     echo ""
     echo " <brain>      : FA or T1 image or similar contrast"
     echo " <outputBase> : Prefix for output image and warps"
-    echo " [F99Dir]     : Default is $FSLDIR/etc/xtract_data/standard/F99"
+    echo " [F99Dir]     : Default is $FSLDIR/data/xtract_data/standard/F99"
     echo ""
     exit 1
 fi
 
 f99dir=$3
 if [ "$atl" == "" ];then
-    f99dir=$FSLDIR/etc/xtract_data/standard/F99
+    f99dir=$FSLDIR/data/xtract_data/standard/F99
 fi
 
 # Parse args
@@ -26,12 +26,12 @@ conf=$f99dir/config
 out=$2
 
 
-# REGISTRATION TO F99 ATLAS 
+# REGISTRATION TO F99 ATLAS
 
 echo ""
 echo "  ---> Remove Bias Field"
 
-fast -n 1 -b -B -l 10 -o ${out}_struct_brain $anat 
+fast -n 1 -b -B -l 10 -o ${out}_struct_brain $anat
 
 echo ""
 echo "  ---> Initial affine registration"
