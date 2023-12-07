@@ -1,0 +1,120 @@
+<html>
+<head>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+        body {
+            padding: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            text-align: right;
+        }
+        table tr {
+            border-bottom: 1px solid
+        }
+        table th, table td {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>XTRACT QC Report</h1>
+
+<h2>Generated at: {{ time }}</h2>
+
+<p> Number of subjects = {{ nsubs }} </p>
+<p> Number of tracts = {{ ntracts }} </p>
+<p> Overall success rate (i.e. how many tract files were successfully generated?) = {{ sumcheck_all_txt }} </p>
+
+<h2> Subjects missing data files </h2>
+<ul>
+{% if sub_missing_all_txt == [] %}
+  <li> No subjects are missing all tract files! </li>
+{% else %}
+  {% for sub in sub_missing_all_txt %}
+     <li>{{ sub }}</li>
+  {% endfor %}
+{% endif %}
+</ul>
+
+<ul>
+{% if sub_missing_txt == [] %}
+  <li> No subjects are missing any tracts! </li>
+{% else %}
+  {% for sub in sub_missing_txt %}
+     <li>{{ sub }}</li>
+  {% endfor %}
+{% endif %}
+</ul>
+
+<h2> Subjects with empty tract files </h2>
+<ul>
+{% if sub_zerowt_txt == [] %}
+  <li> No subjects have empty tract files! </li>
+{% else %}
+  {% for sub in sub_zerowt_txt %}
+     <li>{{ sub }}</li>
+  {% endfor %}
+{% endif %}
+</ul>
+
+{% if ps_inc == 1 %}
+  <h2> Percent successful tracts </h2>
+  <iframe id="percsuccess"
+      title="Percent successful tracts"
+      width="800"
+      height="400"
+      src="percent_success_fig.html">
+  </iframe>
+{% endif %}
+
+<h2> Waytotal distributions </h2>
+<p> Distributions across subjects for each tract for waytotal </p>
+<p> x-axes are waytotal values </p>
+<p> Shaded area provides 1 standard deviation either side of mean. Dashed black line gives {{ n_std }} deviations from the mean. </p>
+<p> Dotted red line provides the mean. Dashed red line provides the median. </p>
+<img src='waytotal_fig.jpg' width="800">
+
+<h2> Volume distributions </h2>
+<p> Distributions across subjects for each tract for tract volume </p>
+<p> x-axes are volumes values </p>
+<img src='volume_fig.jpg' width="800">
+
+<h2> Number of potential outliers per tract </h2>
+<p> i.e. number of entries {{ n_std }} standard deviations away from respective mean </p>
+<iframe id="outliers"
+    title="Numer of potential outliers"
+    width="800"
+    height="600"
+    src="outlier_fig.html">
+</iframe>
+
+<h2> Extreme outliers </h2>
+<p> i.e. more than half of tracts are {{ n_std }} standard deviations from mean </p>
+<ul>
+{% if sub_extreme_outliers_txt == [] %}
+  <li> No extreme outliers detected! </li>
+{% else %}
+  {% for sub in sub_extreme_outliers_txt %}
+     <li>{{ sub }}</li>
+  {% endfor %}
+{% endif %}
+</ul>
+
+<h2> Potential outliers against any tract </h2>
+{% if sub_outliers_txt == [] %}
+  <h3> No outliers detected for any tract! </h3>
+{% else %}
+  <h3> {{ n_outliers }} potential outliers detected: <a href="tract_outliers.csv">tract_outliers.csv</a> </h3>
+  <p> Note: subject's are considered as potential outliers if: </p>
+  <ul>
+    <li>Their tract volume or waytotal is {{ n_std }} standard deviations away from the group mean, and</li>
+    <li>The tract file is not empty, i.e. waytotal>0 and volume>0.</li>
+  </ul>
+{% endif %}
+
+</body>
+</html>
